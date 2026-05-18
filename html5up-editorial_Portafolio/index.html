@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Portafolio Profesional | Luis Adrian Ortiz Solis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			#modal-proyecto.custom-modal {
+				display: none;
+				position: fixed;
+				z-index: 10000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background: rgba(0, 0, 0, 0.75);
+				align-items: center;
+				justify-content: center;
+				padding: 2rem 1rem;
+				box-sizing: border-box;
+			}
+
+			#modal-proyecto .modal-content {
+				width: min(900px, 100%);
+				max-width: 900px;
+				max-height: calc(100vh - 4rem);
+				background: #fff;
+				border-radius: 0.75rem;
+				padding: 2rem;
+				overflow-y: auto;
+				position: relative;
+				box-sizing: border-box;
+			}
+
+			#modal-proyecto .modal-content::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			#modal-proyecto .modal-content::-webkit-scrollbar-thumb {
+				background: rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+			}
+
+			.close-modal {
+				cursor: pointer;
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+				font-size: 1.75rem;
+				line-height: 1;
+				color: #000;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Mi Portafolio</strong></a>
+									<ul class="icons">
+										<li><a href="https://github.com/AdrianLAOS" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="https://www.linkedin.com/in/luis-adrian-ortiz-solis-6963203b1" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#contacto" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+									</ul>
+								</header>
+								<section id="banner">
+									<div class="content">
+										<header>
+										<h1>Hola, soy <strong>Adrian</strong><br />
+										Desarrollador Web y Mobil</h1>
+										<p>Estudiante de Ingenería en tecnologías de la informacíon e innovacíon digital enfocado en el desarrollo de soluciones digitales y arquitecturas de software eficientes.</p>
+									</header>
+									<p>Me especializo en: Aplicaciones web, aplicaciones moviles y experiencias responsivas. Revisa mis proyectos y visita mi GitHub para ver más trabajos.</p>
+									<ul class="actions">
+										<li><a href="#proyectos" class="button big">Ver proyectos</a></li>
+									</ul>
+								</div>
+								<span class="image object">
+									<img src="images/code-banner.jpg" alt="Imagen de código" />
+									</span>
+								</section>
+
+							<!-- Section -->
+								<section id="sobre-mi">
+									<header class="major">
+										<h2>Sobre mí</h2>
+									</header>
+									<p>Soy estudiante con pasión por el desarrollo web y de aplicaciones móviles. Me entusiasma diseñar experiencias digitales modernas, accesibles y eficientes. Cuento con experiencia práctica utilizando lenguajes como Java, Python, PHP y JavaScript, complementados con bases de datos SQL y metodologías de diseño limpio</p>
+								</section>
+
+							<!-- Section -->
+								<section id="proyectos">
+									<header class="major">
+										<h2>Proyectos recientes</h2>
+									</header>
+							<div class="features">
+								<article>
+									<span class="icon solid fa-code"></span>
+									<div class="content">
+										<h3>Aplicación móvil (ForaneosHub)</h3>
+										<p>Plataforma móvil diseñada bajo una Arquitectura Orientada a Servicios (SOA) que permite a los arrendadores gestionar sus propiedades eficientemente.</p>
+										<ul class="actions">
+											<li>
+												<a href="#" class="button btn-abrir-modal"
+												   data-titulo="Aplicación Móvil (ForaneosHub)"
+												   data-descripcion="Plataforma móvil diseñada bajo una Arquitectura Orientada a Servicios (SOA) que permite a los arrendadores gestionar sus propiedades eficientemente."
+												   data-img="images/Imagen_FH_movil.jpg"
+												   data-github="https://github.com/AdrianLAOS/ForaneosHub-Movil">
+												   Más info
+												</a>
+											</li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<span class="icon solid fa-mobile-alt"></span>
+									<div class="content">
+										<h3>App de tareas</h3>
+										<p>Aplicación web para gestionar pendientes, con filtros y diseño adaptativo.</p>
+										<ul class="actions">
+											<li>
+												<a href="#" class="button btn-abrir-modal"
+												   data-titulo="App de tareas"
+												   data-descripcion="Aplicación web para gestionar tareas diarias con filtros inteligentes, diseño adaptativo y recordatorios para mantener tu trabajo organizado."
+												   data-img="images/pic02.jpg"
+												   data-github="https://github.com/AdrianLAOS/app-tareas">
+												   Más info
+												</a>
+											</li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<span class="icon solid fa-chart-bar"></span>
+									<div class="content">
+										<h3>ForaneosHub Aplicación Web</h3>
+										<p>Aplicación web tipo Airbnb para que estudiantes encuentren alojamiento</p>
+										<ul class="actions">
+											<li>
+												<a href="#" class="button btn-abrir-modal"
+												   data-titulo="Dashboard interactivo"
+												   data-descripcion="Aplicación Web para que estudiantes foraneos encuentren un alojamiento lo mas cerca de su universidad contando con comunicación directa con el arrendador y un sistema de reservas."
+												   data-img="images/pic03.jpg"
+												   data-github="https://github.com/AdrianLAOS/dashboard-interactivo">
+												   Más info
+												</a>
+											</li>
+									</ul>
+								</div>
+							</article>
+						</div>
+					</section>
+							<!-- Section -->
+								<section id="servicios">
+									<header class="major">
+										<h2>Servicios</h2>
+									</header>
+									<p>Ofrezco desarrollo de sitios web, aplicaciones móviles, integraciones API y mantenimiento de proyectos. Trabajo con tecnologías modernas para crear soluciones adaptadas a tus necesidades.</p>
+								</section>
+							<!-- Section -->
+								<section id="habilidades">
+									<header class="major">
+										<h2>Habilidades</h2>
+									</header>
+									<div class="features">
+										<article>
+											<span class="icon fa-laptop-code"></span>
+											<div class="content">
+												<h3>Frontend</h3>
+												<p>HTML5, CSS3, JavaScript, responsive design y accesibilidad.</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon fa-server"></span>
+											<div class="content">
+												<h3>Herramientas</h3>
+												<p>Git, GitHub y VS Code.</p>
+											</div>
+										</article>
+										<article>
+											<span class="icon fa-users"></span>
+											<div class="content">
+												<h3>Comunicación</h3>
+												<p>Trabajo en equipo, coordinación con clientes y entrega de soluciones puntuales.</p>
+											</div>
+										</article>
+									</div>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Navegación</h2>
+									</header>
+									<ul>
+										<li><a href="#banner">Inicio</a></li>
+										<li><a href="#proyectos">Proyectos</a></li>
+									<li><a href="#servicios">Servicios</a></li>
+									<li><a href="#sobre-mi">Sobre mí</a></li>
+									<li><a href="#habilidades">Habilidades</a></li>
+										<li><a href="#contacto">Contacto</a></li>
+									</ul>
+								</nav>
+
+							<!-- Sección de contacto -->
+									<section id="contacto">
+										<header class="major">
+									</header>
+									<p>Encuentra mis proyectos en GitHub o escríbeme si quieres trabajar juntos en una idea.</p>
+									<ul class="contact">
+										<li class="icon brands fa-github"><a href="https://github.com/AdrianLAOS" target="_blank">github.com/AdrianLAOS</a></li>
+										<li class="icon solid fa-envelope"><a href="mailto:luisadrianortizsolis1@gmail.com">luisadrianortizsolis1@gmail.com</a></li>
+										<li class="icon solid fa-phone">5528960864</li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; 2026 Luis Adrian Ortiz Solis. <a href="https://github.com/AdrianLAOS" target="_blank">GitHub</a></p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+            <!-- Modales -->
+			<div id="modal-proyecto" class="custom-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        
+        <h2 id="modal-titulo">Título del Proyecto</h2>
+        
+        <div class="modal-galeria">
+            <img id="modal-img" src="images/pic01.jpg" alt="Captura del proyecto">
+        </div>
+        
+        <p id="modal-descripcion">Descripción detallada del proyecto...</p>
+        
+        <ul class="actions">
+            <li><a href="#" id="modal-link-github" target="_blank" class="button primary icon brands fa-github">Ir al Repositorio</a></li>
+        </ul>
+    </div>
+</div>
+
+	</body>
+</html>
