@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			#modal-proyecto.custom-modal {
+			.custom-modal {
 				display: none;
 				position: fixed;
 				z-index: 10000;
@@ -27,7 +27,11 @@
 				box-sizing: border-box;
 			}
 
-			#modal-proyecto .modal-content {
+			.custom-modal.open {
+				display: flex;
+			}
+
+			.custom-modal .modal-content {
 				width: min(900px, 100%);
 				max-width: 900px;
 				max-height: calc(100vh - 4rem);
@@ -39,13 +43,59 @@
 				box-sizing: border-box;
 			}
 
-			#modal-proyecto .modal-content::-webkit-scrollbar {
+			.custom-modal .modal-content::-webkit-scrollbar {
 				width: 8px;
 			}
 
-			#modal-proyecto .modal-content::-webkit-scrollbar-thumb {
+			.custom-modal .modal-content::-webkit-scrollbar-thumb {
 				background: rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
+			}
+
+			#modal-todos-proyectos .modal-content {
+				padding: 2rem 1.5rem;
+			}
+
+			.project-list {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 1rem;
+				margin-top: 1.5rem;
+			}
+
+			.project-card {
+				border: 1px solid rgba(0,0,0,0.08);
+				border-radius: 0.8rem;
+				overflow: hidden;
+				background: #fbfbfb;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.project-card img {
+				width: 100%;
+				height: 180px;
+				object-fit: cover;
+			}
+
+			.project-card .card-content {
+				padding: 1rem;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.project-card .card-content h3 {
+				margin: 0 0 0.5rem;
+			}
+
+			.project-card .card-content p {
+				margin: 0 0 1rem;
+				flex: 1;
+			}
+
+			.project-card .card-content a {
+				margin-top: auto;
 			}
 
 			.close-modal {
@@ -163,9 +213,12 @@
 								</div>
 							</article>
 						</div>
-					</section>
-							<!-- Section -->
-								<section id="servicios">
+			<div class="actions">
+				<a href="#" class="button primary" id="btn-ver-todos">Ver todos los proyectos</a>
+			</div>
+			</section>
+					<!-- Section -->
+					<section id="servicios">
 									<header class="major">
 										<h2>Servicios</h2>
 									</header>
@@ -251,8 +304,35 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const btnVerTodos = document.getElementById('btn-ver-todos');
+					const modalTodos = document.getElementById('modal-todos-proyectos');
+					const modalCerrar = document.querySelectorAll('.close-modal');
 
+					btnVerTodos?.addEventListener('click', function(event) {
+						event.preventDefault();
+						modalTodos?.classList.add('open');
+						modalTodos?.style.setProperty('display', 'flex');
+					});
 
+					modalCerrar.forEach(button => {
+						button.addEventListener('click', () => {
+							button.closest('.custom-modal')?.classList.remove('open');
+							button.closest('.custom-modal')?.style.setProperty('display', 'none');
+						});
+					});
+
+					window.addEventListener('click', function(event) {
+						if (event.target instanceof HTMLElement) {
+							if (event.target.classList.contains('custom-modal')) {
+								event.target.classList.remove('open');
+								event.target.style.setProperty('display', 'none');
+							}
+						}
+					});
+				});
+			</script>
             <!-- Modales -->
 			<div id="modal-proyecto" class="custom-modal">
     <div class="modal-content">
@@ -271,6 +351,58 @@
         </ul>
     </div>
 </div>
+
+		<div id="modal-todos-proyectos" class="custom-modal">
+			<div class="modal-content">
+				<span class="close-modal">&times;</span>
+				<header>
+					<h2>Todos los proyectos</h2>
+					<p>Aquí están los proyectos con los que he trabajado.</p>
+				</header>
+				<div class="project-list">
+					<article class="project-card">
+						<img src="images/Imagen_FH_movil.jpg" alt="Aplicación móvil ForaneosHub">
+						<div class="card-content">
+							<h3>Aplicación móvil (ForaneosHub)</h3>
+							<p>Plataforma móvil diseñada bajo una Arquitectura Orientada a Servicios (SOA) que permite a los arrendadores gestionar sus propiedades eficientemente.</p>
+							<a href="https://github.com/AdrianLAOS/ForaneosHub-Movil" target="_blank" class="button small">Ver repositorio</a>
+						</div>
+					</article>
+					<article class="project-card">
+						<img src="images/pic02.jpg" alt="App de tareas">
+						<div class="card-content">
+							<h3>App de tareas</h3>
+							<p>Aplicación web para gestionar tareas diarias con filtros inteligentes, diseño adaptativo y recordatorios para mantener tu trabajo organizado.</p>
+							<a href="https://github.com/AdrianLAOS/app-tareas" target="_blank" class="button small">Ver repositorio</a>
+						</div>
+					</article>
+					<article class="project-card">
+						<img src="images/pic03.jpg" alt="ForaneosHub Aplicación Web">
+						<div class="card-content">
+							<h3>ForaneosHub Aplicación Web</h3>
+							<p>Aplicación web para que estudiantes foráneos encuentren alojamiento cercano a su universidad con comunicaciones directas y sistema de reservas.</p>
+							<a href="https://github.com/AdrianLAOS/dashboard-interactivo" target="_blank" class="button small">Ver repositorio</a>
+						</div>
+					</article>
+					<article class="project-card">
+						<img src="images/pic01.jpg" alt="Plantilla de proyecto futuro">
+						<div class="card-content">
+							<h3>Nuevo proyecto (plantilla)</h3>
+							<p>Plantilla lista para agregar un nuevo proyecto en el futuro. Edita el título, la descripción y la imagen cuando esté disponible.</p>
+							<a href="#" class="button small">Editar en el futuro</a>
+						</div>
+					</article>
+					<article class="project-card">
+						<img src="images/pic01.jpg" alt="Plantilla de proyecto futuro">
+						<div class="card-content">
+							<h3>Nuevo proyecto (plantilla2)</h3>
+							<p>Plantilla lista para agregar un nuevo proyecto en el futuro. Edita el título, la descripción y la imagen cuando esté disponible.</p>
+							<a href="#" class="button small">Editar en el futuro</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
 
 	</body>
 </html>
