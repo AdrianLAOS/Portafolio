@@ -308,38 +308,53 @@
 									<li><a href="#sobre-mi">Sobre mí</a></li>
 									<li><a href="#habilidades">Habilidades</a></li>
 									<li><a href="#novedades">Tecnologías</a></li>
-										<li><a href="#contacto">Contacto</a></li>
+										<li><a href="#" id="contactLink">Contacto</a></li>
 									</ul>
 								</nav>
 
 							<!-- Sección de contacto -->
-									<section id="contacto">
-										<header class="major">
+								<section id="contacto">
+									<header class="major">
+										<h2>Contacto</h2>
 									</header>
-									<p>Encuentra mis proyectos en GitHub o escríbeme si quieres trabajar juntos en una idea.</p>
-									<ul class="contact">
-										<li class="icon brands fa-github"><a href="https://github.com/AdrianLAOS" target="_blank">github.com/AdrianLAOS</a></li>
-										<li class="icon solid fa-envelope"><a href="mailto:luisadrianortizsolis1@gmail.com">luisadrianortizsolis1@gmail.com</a></li>
-										<li class="icon solid fa-phone">5528960864</li>
-									</ul>
-								</section>
+					<p>Encuentra mis proyectos en GitHub o escríbeme si quieres trabajar juntos en una idea.</p>
+					<ul class="contact">
+						<li class="icon brands fa-github"><a href="https://github.com/AdrianLAOS" target="_blank">github.com/AdrianLAOS</a></li>
+						<li class="icon solid fa-envelope"><a href="mailto:luisadrianortizsolis1@gmail.com">luisadrianortizsolis1@gmail.com</a></li>
+						<li class="icon solid fa-phone">5528960864</li>
+					</ul>
+					</section>
 
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; 2026 Luis Adrian Ortiz Solis. <a href="https://github.com/AdrianLAOS" target="_blank">GitHub</a></p>
-								</footer>
-
-						</div>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
+					<!-- Footer -->
+						<footer id="footer">
+							<p class="copyright">&copy; 2026 Luis Adrian Ortiz Solis. <a href="https://github.com/AdrianLAOS" target="_blank">GitHub</a></p>
+						</footer>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Validación del formulario de contacto (cliente)
+				document.addEventListener("DOMContentLoaded", function() {
+					const form = document.getElementById('contactForm');
+					if (!form) return;
+					form.addEventListener('submit', function(e) {
+						const nombre = (form.nombre && form.nombre.value || '').trim();
+						const correo = (form.correo && form.correo.value || '').trim();
+                        const asunto = (form.asunto && form.asunto.value || '').trim();
+						const mensaje = (form.mensaje && form.mensaje.value || '').trim();
+						const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+						if (!nombre || !correo || !asunto || !mensaje) {
+							e.preventDefault();
+							alert("Por favor completa los campos requeridos: Nombre, Correo, Asunto y Mensaje.");
+							return;
+						}
+						if (!emailRe.test(correo)) {
+							e.preventDefault();
+							alert("Por favor ingresa un correo válido.");
+							return;
+						}
+					});
+				});
+			</script>
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {
 					const btnVerTodos = document.getElementById('btn-ver-todos');
@@ -376,6 +391,16 @@
 					const lenguajeSubtitulo = document.getElementById('lenguaje-subtitulo');
 					const lenguajeProjectList = document.getElementById('lenguaje-project-list');
 					const lenguajeBotones = document.querySelectorAll('.btn-lenguaje');
+					const contactLink = document.getElementById('contactLink');
+					const contactModal = document.getElementById('modal-contacto');
+
+					if (contactLink && contactModal) {
+						contactLink.addEventListener('click', function(event) {
+							event.preventDefault();
+							contactModal.classList.add('open');
+							contactModal.style.setProperty('display', 'flex');
+						});
+					}
 
 					const proyectosPorLenguaje = {
 						Java: [
@@ -449,7 +474,6 @@
 							}
 						]
 					};
-
 					tituloTecnologias?.addEventListener('click', function(event) {
 						event.preventDefault();
 						modalTecnologias?.classList.add('open');
@@ -510,6 +534,39 @@
         </ul>
     </div>
 </div>
+
+		<div id="modal-contacto" class="custom-modal">
+			<div class="modal-content">
+				<span class="close-modal">←</span>
+				<header>
+					<h2>Contacto</h2>
+					<p>Envíame un mensaje si quieres trabajar juntos.</p>
+				</header>
+				<form method="post" action="enviarmsj.php">
+    <div class="row gtr-uniform">
+        <div class="col-6 col-12-xsmall">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre completo" required />
+        </div>
+        <div class="col-6 col-12-xsmall">
+            <input type="email" name="correo" id="correo" placeholder="Correo electrónico" required />
+        </div>
+        <div class="col-12">
+            <input type="text" name="asunto" id="asunto" placeholder="Asunto del mensaje" required />
+        </div>
+        <div class="col-12">
+            <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" required></textarea>
+        </div>
+        <div class="col-12">
+            <ul class="actions">
+                <li><input type="submit" value="Enviar Mensaje" class="primary" /></li>
+                <li><input type="reset" value="Limpiar" /></li>
+            </ul>
+        </div>
+    </div>
+</form>
+		
+			</div>
+		</div>
 
 		<div id="modal-todos-proyectos" class="custom-modal">
 			<div class="modal-content">
