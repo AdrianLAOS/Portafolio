@@ -98,6 +98,31 @@
 				margin-top: auto;
 			}
 
+			.acciones-proyectos {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+				align-items: center;
+					margin-top: 1rem;
+				}
+
+				.tecnologias-titulo {
+					display: inline-flex;
+					align-items: center;
+					gap: 0.5rem;
+					font-weight: 700;
+					font-size: 1rem;
+					color: #000;
+					cursor: pointer;
+					user-select: none;
+				justify-content: center;
+				gap: 0.5rem;
+			}
+
+			.btn-lenguaje .icon {
+				font-size: 1.15rem;
+			}
+
 			.close-modal {
 				cursor: pointer;
 				position: absolute;
@@ -155,7 +180,7 @@
 							<!-- Section -->
 								<section id="proyectos">
 									<header class="major">
-										<h2>Proyectos recientes</h2>
+										<h2>Proyectos Destacados</h2>
 									</header>
 							<div class="features">
 								<article>
@@ -254,12 +279,22 @@
 									</div>
 								</section>
 
-						</div>
-					</div>
+			<section id="novedades">
+				<header class="major">
+					<h2>Novedades</h2>
+					<p>Explora mis tecnologías principales y abre el modal para ver proyectos relacionados.</p>
+				</header>
+				<div class="actions acciones-proyectos">
+					<span class="tecnologias-label">Tecnologías</span>
+					<a href="#" class="button primary" id="btn-ver-tecnologias">Tecnologías</a>
+				</div>
+			</section>
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+				</div>
+			</div>
+
+		<div id="sidebar">
+				<div class="inner">
 
 							<!-- Menu -->
 								<nav id="menu">
@@ -272,6 +307,7 @@
 									<li><a href="#servicios">Servicios</a></li>
 									<li><a href="#sobre-mi">Sobre mí</a></li>
 									<li><a href="#habilidades">Habilidades</a></li>
+									<li><a href="#novedades">Tecnologías</a></li>
 										<li><a href="#contacto">Contacto</a></li>
 									</ul>
 								</nav>
@@ -331,6 +367,129 @@
 							}
 						}
 					});
+
+					const btnVerTecnologias = document.getElementById('btn-ver-tecnologias');
+					const tituloTecnologias = document.getElementById('titulo-tecnologias');
+					const modalTecnologias = document.getElementById('modal-tecnologias');
+					const modalLenguaje = document.getElementById('modal-proyectos-lenguaje');
+					const lenguajeTitulo = document.getElementById('lenguaje-titulo');
+					const lenguajeSubtitulo = document.getElementById('lenguaje-subtitulo');
+					const lenguajeProjectList = document.getElementById('lenguaje-project-list');
+					const lenguajeBotones = document.querySelectorAll('.btn-lenguaje');
+
+					const proyectosPorLenguaje = {
+						Java: [
+							{
+								titulo: 'Sistema Java de Inventarios',
+								descripcion: 'Aplicación Java para gestionar inventarios y control de productos con interfaz clara.',
+								img: 'images/pic01.jpg',
+								github: '#'
+							},
+							{
+								titulo: 'Plantilla Java (editar)',
+								descripcion: 'Plantilla lista para agregar detalles del proyecto Java y el enlace del repositorio en GitHub.',
+								img: 'images/pic01.jpg',
+								github: '#'
+							}
+						],
+						Python: [
+							{
+								titulo: 'Automatización con Python',
+								descripcion: 'Script en Python para automatizar tareas repetitivas y procesar datos de forma eficiente.',
+								img: 'images/pic02.jpg',
+								github: '#'
+							},
+							{
+								titulo: 'Plantilla Python (editar)',
+								descripcion: 'Plantilla lista para agregar un proyecto Python y el enlace de GitHub cuando esté disponible.',
+								img: 'images/pic02.jpg',
+								github: '#'
+							}
+						],
+						PHP: [
+							{
+								titulo: 'Portal PHP',
+								descripcion: 'Proyecto en PHP con conexión a base de datos y gestión de usuarios.',
+								img: 'images/pic03.jpg',
+								github: '#'
+							},
+							{
+								titulo: 'Plantilla PHP (editar)',
+								descripcion: 'Plantilla lista para editar y añadir el repositorio PHP en GitHub.',
+								img: 'images/pic03.jpg',
+								github: '#'
+							}
+						],
+						'Linux/WSL': [
+							{
+								titulo: 'Configuración Linux/WSL',
+								descripcion: 'Proyecto de configuración y despliegue en Linux/WSL para entornos de desarrollo estables.',
+								img: 'images/pic01.jpg',
+								github: '#'
+							},
+							{
+								titulo: 'Plantilla WSL (editar)',
+								descripcion: 'Plantilla disponible para agregar pasos de instalación y el enlace al repositorio de GitHub.',
+								img: 'images/pic01.jpg',
+								github: '#'
+							}
+						],
+						SQL: [
+							{
+								titulo: 'Base de datos SQL',
+								descripcion: 'Proyecto de modelado y consultas SQL para una aplicación de gestión de datos.',
+								img: 'images/pic02.jpg',
+								github: '#'
+							},
+							{
+								titulo: 'Plantilla SQL (editar)',
+								descripcion: 'Plantilla lista para completar con el enlace al repositorio y la estructura de la base de datos.',
+								img: 'images/pic02.jpg',
+								github: '#'
+							}
+						]
+					};
+
+					tituloTecnologias?.addEventListener('click', function(event) {
+						event.preventDefault();
+						modalTecnologias?.classList.add('open');
+						modalTecnologias?.style.setProperty('display', 'flex');
+					});
+
+					btnVerTecnologias?.addEventListener('click', function(event) {
+						event.preventDefault();
+						modalTecnologias?.classList.add('open');
+						modalTecnologias?.style.setProperty('display', 'flex');
+					});
+
+					lenguajeBotones.forEach(button => {
+						button.addEventListener('click', function(event) {
+							event.preventDefault();
+							const lenguaje = button.dataset.lenguaje;
+							openLenguajeModal(lenguaje);
+						});
+					});
+
+					function openLenguajeModal(lenguaje) {
+						modalTecnologias?.classList.remove('open');
+						modalTecnologias?.style.setProperty('display', 'none');
+						const proyectos = proyectosPorLenguaje[lenguaje] || [];
+						lenguajeTitulo.textContent = lenguaje + ' - Proyectos';
+						lenguajeSubtitulo.textContent = 'Proyectos relacionados con ' + lenguaje + '.';
+						lenguajeProjectList.innerHTML = proyectos.map(proyecto => {
+							return `
+								<article class="project-card">
+									<img src="${proyecto.img}" alt="${proyecto.titulo}">
+									<div class="card-content">
+										<h3>${proyecto.titulo}</h3>
+										<p>${proyecto.descripcion}</p>
+										<a href="${proyecto.github}" target="_blank" class="button small">Ver repositorio</a>
+									</div>
+								</article>`;
+						}).join('');
+						modalLenguaje?.classList.add('open');
+						modalLenguaje?.style.setProperty('display', 'flex');
+					}
 				});
 			</script>
             <!-- Modales -->
@@ -403,6 +562,34 @@
 				</div>
 			</div>
 		</div>
+
+				<div id="modal-tecnologias" class="custom-modal">
+					<div class="modal-content">
+						<span class="close-modal">&times;</span>
+						<header>
+							<h2>Tecnologías</h2>
+							<p>Selecciona una tecnología para ver los proyectos relacionados.</p>
+						</header>
+						<div class="tecnologias-grid">
+							<a href="#" class="button small btn-lenguaje" data-lenguaje="Java"><span class="icon brands fa-java"></span> Java</a>
+							<a href="#" class="button small btn-lenguaje" data-lenguaje="Python"><span class="icon brands fa-python"></span> Python</a>
+							<a href="#" class="button small btn-lenguaje" data-lenguaje="PHP"><span class="icon brands fa-php"></span> PHP</a>
+							<a href="#" class="button small btn-lenguaje" data-lenguaje="Linux/WSL"><span class="icon brands fa-linux"></span> Linux/WSL</a>
+							<a href="#" class="button small btn-lenguaje" data-lenguaje="SQL"><span class="icon solid fa-database"></span> SQL</a>
+						</div>
+					</div>
+				</div>
+
+				<div id="modal-proyectos-lenguaje" class="custom-modal">
+					<div class="modal-content">
+						<span class="close-modal">&times;</span>
+						<header>
+							<h2 id="lenguaje-titulo">Proyectos por lenguaje</h2>
+							<p id="lenguaje-subtitulo">Selecciona una tecnología para ver sus proyectos.</p>
+						</header>
+						<div id="lenguaje-project-list" class="project-list"></div>
+					</div>
+				</div>
 
 	</body>
 </html>
